@@ -27,7 +27,13 @@ typedef struct{
     char nome[TAM];
     char email[TAM];
     char obs[TAM];
-    struct adress;
-    struct telefone;
-    struct nascimento;
+    adress adre;
+    telefone tele;
+    nascimento nasci;
 } pessoa;
+
+struct aux{
+    pessoa p;
+    struct aux *next;
+};
+typedef struct aux no;
