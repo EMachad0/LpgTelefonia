@@ -1,5 +1,3 @@
-#include "std.c"
-
 #define TAM 10005
 
 typedef struct{
