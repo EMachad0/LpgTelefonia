@@ -2,10 +2,15 @@
 Trabalho de LPG - Eliton e Laís
 
 Todo
+
 1)
+
 Implementar Pessoa
+
 Implementar Endereço
+
 Implementar telefone
+
 Implementar Data de Nascimento
 
 2)
