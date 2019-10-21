@@ -34,5 +34,6 @@ typedef struct{
 
 typedef struct no{
     pessoa p;
-    struct no* next;
+    struct no* esq;
+    struct no* dir;
 } no;

@@ -1,32 +1,22 @@
 #include "std.c"
-
-no* adiciona(no *raiz, no *novo) {
-    if (raiz == NULL) return novo;
-    raiz->next = adiciona(raiz->next, novo);
-    return raiz;
-}
-
-void print(no *n) {
-    printf("%s\n%s\n", n->p.nome, n->p.email);
-    if (n->next != NULL) print(n->next);
-}
+#include "structs.c"
+#include "arvore.c"
 
 int main() {
     no *raiz = NULL;
 
-    int tam = 3;
+    int tam = 12;
     for (int i = 0; i < tam; i++) {
-        no *novo = malloc(sizeof(no));
+        no *new = malloc(sizeof(no));
 
         fflush(stdin);
-        scanf("%[^\n]s", novo->p.nome);
+        scanf("%[^\n]s", new->p.nome);
         getchar();
-        scanf("%[^\n]s", novo->p.email);
+        scanf("%[^\n]s", new->p.email);
         getchar();
 
-        raiz = adiciona(raiz, novo);
+        raiz = adiciona(raiz, new);
     }
-
 
     print(raiz);
 }
