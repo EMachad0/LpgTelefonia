@@ -3,30 +3,26 @@ Trabalho de LPG - Eliton e Laís
 
 Todo
 
-1)
+1. Item 1:
+  - [x] Implementar Pessoa
+  - [x] Implementar Endereço
+  - [x] Implementar telefone
+  - [x] Implementar Data de Nascimento
 
-Implementar Pessoa
+2. Item 2:
+  - [x] Implementar Arvore Binaria de Buca
 
-Implementar Endereço
+3. Item 3:
+  - [ ] Cria Menu
 
-Implementar telefone
+4. Item 4:
+  - [ ] Imprime Agenda
 
-Implementar Data de Nascimento
+5. Item 5:
+  - [ ] Imprime Pessoa
 
-2)
-Implementar Lista Ligada
+6. Item 6:
+  - [ ] Imprime todas as pessoas com aniversario em determinado mes
 
-3)
-Cria Menu
-
-4)
-Imprime Agenda
-
-5)
-Imprime Pessoa
-
-6)
-Imprime todas as pessoas com aniversario em determinado mes
-
-7)
-Busca por aniversariarante do dia dado
+7. Item 7:
+  - [ ] Busca por aniversariarante do dia dado
