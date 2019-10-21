@@ -32,8 +32,7 @@ typedef struct{
     nascimento nasci;
 } pessoa;
 
-struct aux{
+typedef struct no{
     pessoa p;
-    struct aux *next;
-};
-typedef struct aux no;
+    struct no* next;
+} no;

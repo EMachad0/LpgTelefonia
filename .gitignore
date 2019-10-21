@@ -51,8 +51,13 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+<<<<<<< HEAD
+#debug file
+in
+=======
 # IDE config files
 .idea/
 
 # Debuging file
 in
+>>>>>>> d0743eabde860cdffc78917826e043881d58f1a4
