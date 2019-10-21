@@ -1,6 +1,7 @@
 #include "std.c"
 #include "structs.c"
 #include "arvore.c"
+#include "stringhandler.c"
 
 int main() {
     no *raiz = NULL;
@@ -9,11 +10,8 @@ int main() {
     for (int i = 0; i < tam; i++) {
         no *new = malloc(sizeof(no));
 
-        fflush(stdin);
-        scanf("%[^\n]s", new->p.nome);
-        getchar();
-        scanf("%[^\n]s", new->p.email);
-        getchar();
+        leString(new->p.nome);
+        leString(new->p.email);
 
         raiz = adiciona(raiz, new);
     }

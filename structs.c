@@ -1,4 +1,4 @@
-#define TAM 10005
+#define TAM 100005
 
 typedef struct{
     char rua[TAM];
