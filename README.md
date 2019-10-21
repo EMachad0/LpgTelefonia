@@ -10,7 +10,7 @@ Todo
   - [x] Implementar Data de Nascimento
 
 2. Item 2:
-  - [x] Implementar Arvore Binaria de Buca
+  - [x] Implementar Arvore Binaria de Busca
 
 3. Item 3:
   - [ ] Cria Menu
