@@ -1,7 +1,7 @@
 #include "std.c"
 #include "structs.c"
+#include "console.c"
 #include "arvore.c"
-#include "stringhandler.c"
 
 int main() {
     no *raiz = NULL;

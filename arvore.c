@@ -10,6 +10,6 @@ no* adiciona(no *nodo, no *new) {
 
 void print(no *n) {
     if (n->esq != NULL) print(n->esq);
-    printf("%s %s\n", n->p.nome, n->p.email);
+    printPessoa(n->p);
     if (n->dir != NULL) print(n->dir);
 }
