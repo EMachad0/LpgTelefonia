@@ -3,3 +3,7 @@ void leString(char *s) {
     scanf("%[^\n]s", s);
     getchar();
 }
+
+void printPessoa(pessoa p) {
+    printf("%s %s\n", p.nome, p.email);
+}
