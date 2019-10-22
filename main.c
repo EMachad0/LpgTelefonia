@@ -17,8 +17,7 @@ int main() {
         printf("5 -> Para imprimir os aniversariantes do mês digite 5\n");
         printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
         printf("\n");
-        if(scanf("%d", &ordem) ==  EOF) break;
-        getchar();
+        leInt(&ordem);
         if (ordem == 0) return 0;
         else if (ordem == 1){
             printf("Para adicionar novo contato, digite:\n");

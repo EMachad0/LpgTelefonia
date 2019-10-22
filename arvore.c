@@ -13,3 +13,12 @@ void print(no *n) {
     printPessoa(n->p);
     if (n->dir != NULL) print(n->dir);
 }
+
+int remover(no *n, char *s) {
+    if (n == NULL) return 0;
+    if (strcmp(n->p.nome, s) == 0) {
+
+        return 1;
+    }
+    return remover(n->esq, s) || remover(n->dir, s);
+}
