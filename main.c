@@ -17,7 +17,7 @@ int main() {
         printf("5 -> Para imprimir os aniversariantes do mês digite 5\n");
         printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
         printf("\n");
-        scanf("%d", &ordem);
+        if(scanf("%d", &ordem) ==  EOF) break;
         getchar();
         if (ordem == 0) return 0;
         else if (ordem == 1){
@@ -28,10 +28,12 @@ int main() {
             printf("Email:\n");
             leString(new->p.email);
             raiz = adiciona(raiz, new);
-            print(raiz);
         }
         // else if (ordem == 2)
-        // else if (ordem == 3)
+        else if (ordem == 3){
+            printf("Lista de contatos completa:\n");
+            print(raiz);
+        }
         // else if (ordem == 4)
         // else if (ordem == 5)
         // else if (ordem == 6)
