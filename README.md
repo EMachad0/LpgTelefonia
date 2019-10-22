@@ -16,7 +16,7 @@ Todo
   - [ ] Cria Menu
 
 4. Item 4:
-  - [ ] Imprime Agenda
+  - [X] Imprime Agenda
 
 5. Item 5:
   - [ ] Imprime Pessoa
