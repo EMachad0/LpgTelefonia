@@ -3,8 +3,76 @@
 #include "console.c"
 #include "arvore.c"
 
+no *raiz = NULL;
+
+void add_contato(){
+    printf("Para adicionar novo contato, digite:\n");
+    no *new = malloc(sizeof(no));
+    //nome, email e endereço
+    printf("Nome:\n");
+    leString(new->p.nome);
+    printf("Email:\n");
+    leString(new->p.email);
+    printf("País:\n");
+    leString(new->p.adre.pais);
+    printf("Estado:\n");
+    leString(new->p.adre.estado);
+    printf("Cidade:\n");
+    leString(new->p.adre.cidade);
+    printf("Bairro:\n");
+    leString(new->p.adre.bairro);
+    printf("Rua:\n");
+    leString(new->p.adre.rua);
+    printf("Numero:\n");
+    leInt(&new->p.adre.numero);
+    printf("CEP:\n");
+    leInt(&new->p.adre.cep);
+    printf("Complemento:\n");
+    leString(new->p.adre.complemento);
+    // telefone
+    printf("Código nacional:\n");
+    leInt(&new->p.tele.cod_nacional);
+    printf("Códgio de área:\n");
+    leInt(&new->p.tele.cod_area);
+    printf("Número:\n");
+    leInt(&new->p.tele.num);
+    // nascimento
+    printf("Data de nascimento:\n");
+    printf("Dia:\n");
+    leInt(&new->p.nasci.dia);
+    printf("Mês:\n");
+    leInt(&new->p.nasci.mes);
+    printf("Ano:\n");
+    leInt(&new->p.nasci.ano);
+    //obs
+    printf("Observação:\n");
+    leString(new->p.obs);
+
+    raiz = adiciona(raiz, new);
+}
+
+void print_agenda(){
+    printf("Lista de contatos completa:\n");
+    print(raiz);
+}
+
+// void remove_contato(){
+//
+// }
+
+// void print_dados(){
+//
+// }
+
+//void print_niverMes(){
+//
+// }
+
+// print_niverDia(){
+//
+// }
+
 int main() {
-    no *raiz = NULL;
     while(1){
         int ordem;
         printf("\n");
@@ -19,23 +87,12 @@ int main() {
         printf("\n");
         leInt(&ordem);
         if (ordem == 0) return 0;
-        else if (ordem == 1){
-            printf("Para adicionar novo contato, digite:\n");
-            no *new = malloc(sizeof(no));
-            printf("Nome:\n");
-            leString(new->p.nome);
-            printf("Email:\n");
-            leString(new->p.email);
-            raiz = adiciona(raiz, new);
-        }
-        // else if (ordem == 2)
-        else if (ordem == 3){
-            printf("Lista de contatos completa:\n");
-            print(raiz);
-        }
-        // else if (ordem == 4)
-        // else if (ordem == 5)
-        // else if (ordem == 6)
+        else if (ordem == 1) add_contato();
+        // else if (ordem == 2) remove_contato();
+        else if (ordem == 3) print_agenda();
+        // else if (ordem == 4) print_dados();
+        // else if (ordem == 5) print_niverMes();
+        // else if (ordem == 6) print_niverDia();
         else printf("Digite novamente\n");
     }
 }
