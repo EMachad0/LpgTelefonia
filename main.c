@@ -29,7 +29,10 @@ int main() {
             raiz = adiciona(raiz, new);
         }
         // else if (ordem == 2)
-        else if (ordem == 3) print(raiz);
+        else if (ordem == 3){
+            printf("Lista de contatos completa:\n");
+            print(raiz);
+        }
         // else if (ordem == 4)
         // else if (ordem == 5)
         // else if (ordem == 6)
