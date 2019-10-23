@@ -11,7 +11,7 @@ no* adiciona(no *nodo, no *new) {
 void print(no *n) {
     if (n == NULL) return;
     if (n->esq != NULL) print(n->esq);
-    printPessoa(n->p);
+    printNome(n->p);
     if (n->dir != NULL) print(n->dir);
 }
 
@@ -49,14 +49,11 @@ void achaPessoa(no *nodo, char *s){
     if (nodo == NULL){
         printf("Pessoa não encontrada\n");
         return;
-    }
-    else if (strcmp(nodo->p.nome, s) == 0){
-        printPessoa(nodo->p);
-    }
-    else if (nodo->esq != NULL) {
+    } else if (nodo->esq != NULL) {
         if (strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
-    }
-    else if (nodo->dir != NULL) {
+    } else if (nodo->dir != NULL) {
         if (strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
+    } else {
+        printPessoa(nodo->p);
     }
 }

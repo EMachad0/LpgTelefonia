@@ -4,6 +4,10 @@ void leString(char *s) {
     getchar();
 }
 
+void printNome(pessoa p) {
+    printf("%s\n", p.nome);
+}
+
 void printPessoa(pessoa p) {
     printf("Nome: %s\n", p.nome);
     printf("Email: %s\n", p.email);
