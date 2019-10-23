@@ -74,7 +74,7 @@ void print_agenda(){
 
 int main() {
     while(1){
-        int ordem;
+        int ordem = -1;
         printf("\n");
         printf("Bem-vindo ao menu, como posso ajudá-lo?\n");
         printf("0 -> Para sair da agenda digite 0\n");
@@ -86,10 +86,10 @@ int main() {
         printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
         printf("\n");
         leInt(&ordem);
-        if (ordem == 0) return 0;
-        else if (ordem == 1) add_contato();
+        if ((int) ordem == 0) return 0;
+        else if ((int) ordem == 1) add_contato();
         // else if (ordem == 2) remove_contato();
-        else if (ordem == 3) print_agenda();
+        else if ((int) ordem == 3) print_agenda();
         // else if (ordem == 4) print_dados();
         // else if (ordem == 5) print_niverMes();
         // else if (ordem == 6) print_niverDia();
