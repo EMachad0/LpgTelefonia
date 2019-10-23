@@ -9,12 +9,38 @@ no* adiciona(no *nodo, no *new) {
 }
 
 void print(no *n) {
+    if (n == NULL) return;
     if (n->esq != NULL) print(n->esq);
     printPessoa(n->p);
     if (n->dir != NULL) print(n->dir);
 }
 
-no* remover(no *raiz, char *s) {
+no* findMin(no *nodo) {
+    if (nodo->esq != NULL) return findMin(nodo->esq);
+    else return nodo;
+}
 
-    return raiz;
+no* remover(no *nodo, char *s) {
+    if (nodo == NULL) return nodo;
+    else if (strcmp(nodo->p.nome, s) > 0) nodo->esq = remover(nodo->esq, s);
+    else if (strcmp(nodo->p.nome, s) < 0) nodo->dir = remover(nodo->dir, s);
+    else {
+        if (nodo->esq == NULL && nodo->dir == NULL) {
+            free(nodo);
+            nodo = NULL;
+        } else if (nodo->esq == NULL) {
+            no *aux = nodo;
+            nodo = nodo->dir;
+            free(aux);
+        } else if (nodo->dir == NULL) {
+            no *aux = nodo;
+            nodo = nodo->esq;
+            free(aux);
+        } else {
+            no *mi = findMin(nodo->dir);
+            nodo->p = mi->p;
+            nodo->dir = remover(nodo->dir, mi->p.nome);
+        }
+    }
+    return nodo;
 }
