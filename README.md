@@ -19,7 +19,7 @@ Todo
   - [x] Imprime Agenda
 
 5. Item 5:
-  - [ ] Imprime Pessoa
+  - [x] Imprime Pessoa
 
 6. Item 6:
   - [ ] Imprime todas as pessoas com aniversario em determinado mes
