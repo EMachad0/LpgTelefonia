@@ -57,14 +57,16 @@ void print_agenda(){
 }
 
 void remove_contato(){
-      char s[100005];
-      leString(s);
-      raiz = remover(raiz, s);
+    char s[100005];
+    leString(s);
+    raiz = remover(raiz, s);
 }
 
-// void print_dados(){
-//
-// }
+void print_dados(){
+    char s[100005];
+    leString(s);
+    achaPessoa(raiz, s);
+}
 
 //void print_niverMes(){
 //
@@ -76,7 +78,7 @@ void remove_contato(){
 
 int main() {
     while(1){
-        int ordem;
+        int ordem = -1;
         printf("\n");
         printf("Bem-vindo ao menu, como posso ajudá-lo?\n");
         printf("0 -> Para sair da agenda digite 0\n");
@@ -92,7 +94,7 @@ int main() {
         else if (ordem == 1) add_contato();
         else if (ordem == 2) remove_contato();
         else if (ordem == 3) print_agenda();
-        // else if (ordem == 4) print_dados();
+        else if (ordem == 4) print_dados();
         // else if (ordem == 5) print_niverMes();
         // else if (ordem == 6) print_niverDia();
         else printf("Digite novamente\n");

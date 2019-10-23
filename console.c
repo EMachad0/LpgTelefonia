@@ -5,7 +5,6 @@ void leString(char *s) {
 }
 
 void printPessoa(pessoa p) {
-    // printf("%s %s\n", p.nome, p.email);
     printf("Nome: %s\n", p.nome);
     printf("Email: %s\n", p.email);
     printf("País: %s\n", p.adre.pais);
