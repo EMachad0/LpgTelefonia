@@ -31,7 +31,7 @@ int main() {
         else if (ordem == 2) {
             char s[100005];
             leString(s);
-            printf("%d\n", remover(raiz, s));
+            raiz = remover(raiz, s);
         }
         else if (ordem == 3){
             printf("Lista de contatos completa:\n");
