@@ -8,7 +8,7 @@ typedef struct{
     char pais[TAM];
     int numero;
     int cep;
-    int complemento;
+    char complemento[TAM];
 } adress;
 
 typedef struct{
