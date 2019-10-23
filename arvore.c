@@ -44,3 +44,19 @@ no* remover(no *nodo, char *s) {
     }
     return nodo;
 }
+
+void achaPessoa(no *nodo, char *s){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    }
+    else if (strcmp(nodo->p.nome, s) == 0){
+        printPessoa(nodo->p);
+    }
+    else if (nodo->esq != NULL) {
+        if (strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
+    }
+    else if (nodo->dir != NULL) {
+        if (strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
+    }
+}

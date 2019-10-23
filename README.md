@@ -13,10 +13,10 @@ Todo
   - [x] Implementar Arvore Binaria de Busca
 
 3. Item 3:
-  - [ ] Cria Menu
+  - [x] Cria Menu
 
 4. Item 4:
-  - [X] Imprime Agenda
+  - [x] Imprime Agenda
 
 5. Item 5:
   - [ ] Imprime Pessoa
