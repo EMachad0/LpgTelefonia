@@ -1,7 +1,7 @@
 from random import randint
 
 vogal = ['a', 'e', 'i', 'o', 'u']
-consuante = sorted(list({chr(i+97) for i in range(26)}-set(vogal)))
+consoante = sorted(list({chr(i+97) for i in range(26)}-set(vogal)))
 
 def geraString():
     frase = []
@@ -11,7 +11,7 @@ def geraString():
         letras = randint(4, 16)
         for k in range(letras):
             if k%2==0:
-                palavra.append(consuante[randint(0, len(consuante)-1)])
+                palavra.append(consoante[randint(0, len(consoante)-1)])
             else:
                 palavra.append(vogal[randint(0, len(vogal)-1)])
 
