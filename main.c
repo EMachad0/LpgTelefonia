@@ -56,9 +56,11 @@ void print_agenda(){
     print(raiz);
 }
 
-// void remove_contato(){
-//
-// }
+void remove_contato(){
+      char s[100005];
+      leString(s);
+      raiz = remover(raiz, s);
+}
 
 // void print_dados(){
 //
@@ -86,10 +88,10 @@ int main() {
         printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
         printf("\n");
         leInt(&ordem);
-        if ((int) ordem == 0) return 0;
-        else if ((int) ordem == 1) add_contato();
-        // else if (ordem == 2) remove_contato();
-        else if ((int) ordem == 3) print_agenda();
+        if (ordem == 0) return 0;
+        else if (ordem == 1) add_contato();
+        else if (ordem == 2) remove_contato();
+        else if (ordem == 3) print_agenda();
         // else if (ordem == 4) print_dados();
         // else if (ordem == 5) print_niverMes();
         // else if (ordem == 6) print_niverDia();
