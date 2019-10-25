@@ -25,14 +25,22 @@ def geraPessoa():
     for i in range(len(li)):
         if li[i] == 1:
             li[i] = geraString()
+        elif li[i] == 0 and i == 15:
+            li[i] = randint(1970, 2019)
+        elif li[i] == 0 and i == 14:
+            li[i] = randint(1, 12)
+        elif li[i] == 0 and i == 13:
+            li[i] = randint(1, 31)
         elif li[i] == 0:
-            li[i] = randint(0, 1000000009)
+             li[i] = randint(0, 1000000009)
     return li
 
-quant = 10
+quant = 3
 for i in range(quant):
     p = geraPessoa()
     print(1)
     for j in p:
         print(j)
 print(3)
+print(4)
+print(6)
