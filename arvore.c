@@ -57,3 +57,29 @@ void achaPessoa(no *nodo, char *s){
         printPessoa(nodo->p);
     }
 }
+
+void achaMes(no *nodo, int *m, int *flag){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    }
+    if (nodo->p.nasci.mes == *m){
+        printPessoa(nodo->p);
+        *flag = 1;
+    }
+    if (nodo->esq != NULL) achaMes(nodo->esq, m, flag);
+    if(nodo->dir != NULL) achaMes(nodo->dir, m, flag);
+}
+
+void achaDia(no *nodo, int *m, int *dia, int *flag){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    }
+    if (nodo->p.nasci.mes == *m && nodo->p.nasci.dia == *dia){
+        printPessoa(nodo->p);
+        *flag = 1;
+    }
+    if (nodo->esq != NULL) achaDia(nodo->esq, m, dia, flag);
+    if(nodo->dir != NULL) achaDia(nodo->dir, m, dia, flag);
+}

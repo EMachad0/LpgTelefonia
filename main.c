@@ -48,7 +48,7 @@ void add_contato(){
     leInt(&new->p.nasci.mes);
     printf("Ano:\n");
     leInt(&new->p.nasci.ano);
-    //obs
+    // obs
     printf("Observação:\n");
     leString(new->p.obs);
     new->esq = NULL;
@@ -56,6 +56,7 @@ void add_contato(){
 
     raiz = adiciona(raiz, new);
 }
+// __fpluerg
 
 void salva_programa() {
     FILE *f = fopen("./banco.txt", "wb");
@@ -81,13 +82,22 @@ void print_dados(){
     achaPessoa(raiz, s);
 }
 
-//void print_niverMes(){
-//
-// }
+void print_niverMes(){
+    int mes, flag = 0;
+    printf("Digite o mês que deseja procurar:\n");
+    leInt(&mes);
+    achaMes(raiz, &mes, &flag);
+    if (flag == 0) printf("Nenhum aniversariante nesse mês\n");
+}
 
-// print_niverDia(){
-//
-// }
+void print_niverDia(){
+    int mes, dia, flag = 0;
+    printf("Digite o dia e mês que deseja procurar:\n");
+    leInt(&mes);
+    leInt(&dia);
+    achaDia(raiz, &mes, &dia, &flag);
+    if (flag == 0) printf("Nenhum aniversariante nesse dia\n");
+}
 
 int main() {
     FILE *f = fopen("./banco.txt", "rb");
@@ -112,8 +122,8 @@ int main() {
         else if (ordem == 2) remove_contato();
         else if (ordem == 3) print_agenda();
         else if (ordem == 4) print_dados();
-        // else if (ordem == 5) print_niverMes();
-        // else if (ordem == 6) print_niverDia();
+        else if (ordem == 5) print_niverMes();
+        else if (ordem == 6) print_niverDia();
         else printf("Digite novamente\n");
     }
 }
