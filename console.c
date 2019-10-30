@@ -33,3 +33,13 @@ void leInt(int *n) {
     if (scanf("%d", n) == EOF) *n = 0;
     getchar();
 }
+
+int minString(char *a, char *b) {
+    int ta = strlen(a), tb = strlen(b);
+    for (int i = 0; i < (ta < tb)? ta:tb; i++) {
+        int c1 = (a[i] > 91)? a[i]-'a':a[i]-'A';
+        int c2 = (b[i] > 91)? b[i]-'a':b[i]-'A';
+        if (c1 != c2) return (c1 < c2);
+    }
+    return (ta < tb);
+}
