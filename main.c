@@ -1,7 +1,11 @@
-#include "std.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "structs.c"
 #include "console.c"
 #include "arvore.c"
+#include "banco.c"
 
 no *raiz = NULL;
 
@@ -32,7 +36,7 @@ void add_contato(){
     // telefone
     printf("Código nacional:\n");
     leInt(&new->p.tele.cod_nacional);
-    printf("Códgio de área:\n");
+    printf("Código de área:\n");
     leInt(&new->p.tele.cod_area);
     printf("Número:\n");
     leInt(&new->p.tele.num);
@@ -47,8 +51,17 @@ void add_contato(){
     //obs
     printf("Observação:\n");
     leString(new->p.obs);
+    new->esq = NULL;
+    new->dir = NULL;
 
     raiz = adiciona(raiz, new);
+}
+
+void salva_programa() {
+    FILE *f = fopen("./banco.txt", "wb");
+    salvaBanco(raiz, f);
+    fclose(f);
+    exit(0);
 }
 
 void print_agenda(){
@@ -77,6 +90,10 @@ void print_dados(){
 // }
 
 int main() {
+    FILE *f = fopen("./banco.txt", "rb");
+    raiz = leBanco(raiz, f);
+    fclose(f);
+
     while(1){
         int ordem = -1;
         printf("\n");
@@ -90,7 +107,7 @@ int main() {
         printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
         printf("\n");
         leInt(&ordem);
-        if (ordem == 0) return 0;
+        if (ordem == 0) salva_programa();
         else if (ordem == 1) add_contato();
         else if (ordem == 2) remove_contato();
         else if (ordem == 3) print_agenda();
