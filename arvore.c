@@ -60,7 +60,7 @@ void achaMes(no *nodo, int *m, int *flag){
         return;
     }
     if (nodo->p.nasci.mes == *m){
-        printPessoa(nodo->p);
+        printNome(nodo->p);
         *flag = 1;
     }
     if (nodo->esq != NULL) achaMes(nodo->esq, m, flag);
@@ -73,7 +73,7 @@ void achaDia(no *nodo, int *m, int *dia, int *flag){
         return;
     }
     if (nodo->p.nasci.mes == *m && nodo->p.nasci.dia == *dia){
-        printPessoa(nodo->p);
+        printNome(nodo->p);
         *flag = 1;
     }
     if (nodo->esq != NULL) achaDia(nodo->esq, m, dia, flag);

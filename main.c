@@ -92,8 +92,8 @@ void print_niverMes(){
 void print_niverDia(){
     int mes, dia, flag = 0;
     printf("Digite o dia e mês que deseja procurar:\n");
-    leInt(&mes);
     leInt(&dia);
+    leInt(&mes);
     achaDia(raiz, &mes, &dia, &flag);
     if (flag == 0) printf("Nenhum aniversariante nesse dia\n");
 }
