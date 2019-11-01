@@ -49,13 +49,9 @@ void achaPessoa(no *nodo, char *s){
     if (nodo == NULL){
         printf("Pessoa não encontrada\n");
         return;
-    } else if (nodo->esq != NULL) {
-        if (strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
-    } else if (nodo->dir != NULL) {
-        if (strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
-    } else {
-        printPessoa(nodo->p);
-    }
+    } else if (nodo->esq != NULL && strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
+    else if (nodo->dir != NULL && strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
+    else printPessoa(nodo->p);
 }
 
 void achaMes(no *nodo, int *m, int *flag){
