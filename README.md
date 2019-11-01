@@ -22,7 +22,7 @@ Todo
   - [x] Imprime Pessoa
 
 6. Item 6:
-  - [ ] Imprime todas as pessoas com aniversario em determinado mes
+  - [x] Imprime todas as pessoas com aniversario em determinado mes
 
 7. Item 7:
-  - [ ] Busca por aniversariarante do dia dado
+  - [x] Busca por aniversariarante do dia dado
