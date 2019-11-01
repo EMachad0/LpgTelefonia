@@ -34,10 +34,10 @@ void add_contato(){
     leInt(&new->p.tele.cod_nacional);
     printf("Códgio de área:\n");
     leInt(&new->p.tele.cod_area);
-    printf("Número:\n");
+    printf("Número de telefone:\n");
     leInt(&new->p.tele.num);
     // nascimento
-    printf("Data de nascimento:\n");
+    printf("Data de nascimento (dd/mm/aaaa)\n");
     printf("Dia:\n");
     leInt(&new->p.nasci.dia);
     printf("Mês:\n");
@@ -50,7 +50,6 @@ void add_contato(){
 
     raiz = adiciona(raiz, new);
 }
-// __fpluerg
 
 void print_agenda(){
     printf("Lista de contatos completa:\n");
