@@ -1,6 +1,6 @@
 no* adiciona(no *nodo, no *new) {
     if (nodo == NULL) return new;
-    if (minString(new->p.nome, nodo->p.nome)) {
+    if (strcmp(new->p.nome, nodo->p.nome) < 0) {
         nodo->esq = adiciona(nodo->esq, new);
     } else {
         nodo->dir = adiciona(nodo->dir, new);
@@ -22,8 +22,8 @@ no* findMin(no *nodo) {
 
 no* remover(no *nodo, char *s) {
     if (nodo == NULL) return nodo;
-    else if (minString(nodo->p.nome, s)) nodo->esq = remover(nodo->esq, s);
-    else if (minString(nodo->p.nome, s)) nodo->dir = remover(nodo->dir, s);
+    else if (strcmp(nodo->p.nome, s) > 0) nodo->esq = remover(nodo->esq, s);
+    else if (strcmp(nodo->p.nome, s) < 0) nodo->dir = remover(nodo->dir, s);
     else {
         if (nodo->esq == NULL && nodo->dir == NULL) {
             free(nodo);
@@ -50,9 +50,9 @@ void achaPessoa(no *nodo, char *s){
         printf("Pessoa não encontrada\n");
         return;
     } else if (nodo->esq != NULL) {
-        if (minString(nodo->p.nome, s)) achaPessoa(nodo->esq, s);
+        if (strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
     } else if (nodo->dir != NULL) {
-        if (minString(nodo->p.nome, s)) achaPessoa(nodo->dir, s);
+        if (strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
     } else {
         printPessoa(nodo->p);
     }

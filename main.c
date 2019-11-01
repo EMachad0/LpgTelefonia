@@ -56,6 +56,7 @@ void add_contato(){
 
     raiz = adiciona(raiz, new);
 }
+// __fpluerg
 
 void salva_programa() {
     FILE *f = fopen("./banco.txt", "wb");
