@@ -9,6 +9,43 @@
 
 no *raiz = NULL;
 
+void add_contato();
+void salva_programa();
+void print_agenda();
+void remove_contato();
+void print_dados();
+void print_niverMes();
+void print_niverDia();
+
+int main() {
+    FILE *f = fopen("./banco.txt", "rb");
+    raiz = leBanco(raiz, f);
+    fclose(f);
+
+    while(1){
+        int ordem = -1;
+        printf("\n");
+        printf("Bem-vindo ao menu, como posso ajudá-lo?\n");
+        printf("0 -> Para sair da agenda digite 0\n");
+        printf("1 -> Para adicionar novo contato digite 1\n");
+        printf("2 -> Para remover contato digite 2\n");
+        printf("3 -> Para imprimir a agenda digite 3\n");
+        printf("4 -> Para imprimir os dados de determinada pessoa digite 4\n");
+        printf("5 -> Para imprimir os aniversariantes do mês digite 5\n");
+        printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
+        printf("\n");
+        leInt(&ordem);
+        if (ordem == 0) salva_programa();
+        else if (ordem == 1) add_contato();
+        else if (ordem == 2) remove_contato();
+        else if (ordem == 3) print_agenda();
+        else if (ordem == 4) print_dados();
+        else if (ordem == 5) print_niverMes();
+        else if (ordem == 6) print_niverDia();
+        else printf("Digite novamente\n");
+    }
+}
+
 void add_contato(){
     printf("Para adicionar novo contato, digite:\n");
     no *new = malloc(sizeof(no));
@@ -42,11 +79,11 @@ void add_contato(){
     leInt(&new->p.tele.num);
     // nascimento
     printf("Data de nascimento (dd/mm/aaaa)\n");
-    printf("Dia:\n");
+    printf("Dia(dd):\n");
     leInt(&new->p.nasci.dia);
-    printf("Mês:\n");
+    printf("Mês(mm):\n");
     leInt(&new->p.nasci.mes);
-    printf("Ano:\n");
+    printf("Ano(aaaa):\n");
     leInt(&new->p.nasci.ano);
     // obs
     printf("Observação:\n");
@@ -96,33 +133,4 @@ void print_niverDia(){
     leInt(&mes);
     achaDia(raiz, &mes, &dia, &flag);
     if (flag == 0) printf("Nenhum aniversariante nesse dia\n");
-}
-
-int main() {
-    FILE *f = fopen("./banco.txt", "rb");
-    raiz = leBanco(raiz, f);
-    fclose(f);
-
-    while(1){
-        int ordem = -1;
-        printf("\n");
-        printf("Bem-vindo ao menu, como posso ajudá-lo?\n");
-        printf("0 -> Para sair da agenda digite 0\n");
-        printf("1 -> Para adicionar novo contato digite 1\n");
-        printf("2 -> Para remover contato digite 2\n");
-        printf("3 -> Para imprimir a agenda digite 3\n");
-        printf("4 -> Para imprimir os dados de determinada pessoa digite 4\n");
-        printf("5 -> Para imprimir os aniversariantes do mês digite 5\n");
-        printf("6 -> Para imprimir os aniversariantes do dia digite 6\n");
-        printf("\n");
-        leInt(&ordem);
-        if (ordem == 0) salva_programa();
-        else if (ordem == 1) add_contato();
-        else if (ordem == 2) remove_contato();
-        else if (ordem == 3) print_agenda();
-        else if (ordem == 4) print_dados();
-        else if (ordem == 5) print_niverMes();
-        else if (ordem == 6) print_niverDia();
-        else printf("Digite novamente\n");
-    }
 }
