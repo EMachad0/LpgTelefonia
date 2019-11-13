@@ -79,11 +79,11 @@ void add_contato(){
     leInt(&new->p.tele.num);
     // nascimento
     printf("Data de nascimento (dd/mm/aaaa)\n");
-    printf("Dia:\n");
+    printf("Dia(dd):\n");
     leInt(&new->p.nasci.dia);
-    printf("Mês:\n");
+    printf("Mês(mm):\n");
     leInt(&new->p.nasci.mes);
-    printf("Ano:\n");
+    printf("Ano(aaaa):\n");
     leInt(&new->p.nasci.ano);
     // obs
     printf("Observação:\n");
