@@ -75,8 +75,10 @@ no *raiz = NULL;
 
 int main() {
     FILE *f = fopen("./banco.txt", "rb");
-    raiz = leBanco(raiz, f);
-    fclose(f);
+    if (f != NULL) {
+        raiz = leBanco(raiz, f);
+        fclose(f);
+    }
 
     while(1){
         int ordem = -1;
