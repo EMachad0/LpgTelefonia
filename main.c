@@ -2,13 +2,48 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "structs.c"
-#include "console.c"
-#include "arvore.c"
-#include "banco.c"
+#define TAM 100005
 
-no *raiz = NULL;
+// Structs
+typedef struct{
+    char rua[TAM];
+    char bairro[TAM];
+    char cidade[TAM];
+    char estado[TAM];
+    char pais[TAM];
+    int numero;
+    int cep;
+    char complemento[TAM];
+} adress;
 
+typedef struct{
+    int cod_nacional;
+    int cod_area;
+    int num;
+} telefone;
+
+typedef struct{
+    int dia;
+    int mes;
+    int ano;
+} nascimento;
+
+typedef struct{
+    char nome[TAM];
+    char email[TAM];
+    char obs[TAM];
+    adress adre;
+    telefone tele;
+    nascimento nasci;
+} pessoa;
+
+typedef struct no{
+    pessoa p;
+    struct no* esq;
+    struct no* dir;
+} no;
+
+// Menu
 void add_contato();
 void salva_programa();
 void print_agenda();
@@ -16,6 +51,27 @@ void remove_contato();
 void print_dados();
 void print_niverMes();
 void print_niverDia();
+
+// Console Interation
+void leString(char *s);
+void printNome(pessoa p);
+void printPessoa(pessoa p);
+void leInt(int *n);
+
+// Arquivo
+void salvaBanco(no *nodo, FILE *f);
+no* leBanco(no *raiz, FILE *f);
+
+// Arvore
+no* adiciona(no *nodo, no *new);
+void print(no *n);
+no* findMin(no *nodo);
+no* remover(no *nodo, char *s);
+void achaPessoa(no *nodo, char *s);
+void achaMes(no *nodo, int *m, int *flag);
+void achaDia(no *nodo, int *m, int *dia, int *flag);
+
+no *raiz = NULL;
 
 int main() {
     FILE *f = fopen("./banco.txt", "rb");
@@ -46,6 +102,7 @@ int main() {
     }
 }
 
+// Menu
 void add_contato(){
     printf("Para adicionar novo contato, digite:\n");
     no *new = malloc(sizeof(no));
@@ -133,4 +190,144 @@ void print_niverDia(){
     leInt(&mes);
     achaDia(raiz, &mes, &dia, &flag);
     if (flag == 0) printf("Nenhum aniversariante nesse dia\n");
+}
+
+// Console Interation
+void leString(char *s) {
+    fflush(stdin);
+    scanf("%[^\n]s", s);
+    getchar();
+}
+
+void printNome(pessoa p) {
+    printf("%s\n", p.nome);
+}
+
+void printPessoa(pessoa p) {
+    printf("Nome: %s\n", p.nome);
+    printf("Email: %s\n", p.email);
+    printf("País: %s\n", p.adre.pais);
+    printf("Estado: %s\n", p.adre.estado);
+    printf("Cidade: %s\n", p.adre.cidade);
+    printf("Bairro: %s\n", p.adre.bairro);
+    printf("Rua: %s\n", p.adre.rua);
+    printf("Numero: %d\n", p.adre.numero);
+    printf("CEP: %d\n", p.adre.cep);
+    printf("Complemento: %s\n", p.adre.complemento);
+    printf("Código nacional: %d\n", p.tele.cod_nacional);
+    printf("Códgio de área: %d\n", p.tele.cod_area);
+    printf("Número: %d\n", p.tele.num);
+    printf("Data de nascimento:\n");
+    printf("Dia: %d\n", p.nasci.dia);
+    printf("Mês: %d\n", p.nasci.mes);
+    printf("Ano: %d\n", p.nasci.ano);
+    printf("Observação: %s\n", p.obs);
+}
+
+void leInt(int *n) {
+    if (scanf("%d", n) == EOF) *n = 0;
+    getchar();
+}
+
+// Banco
+void salvaBanco(no *nodo, FILE *f) {
+    if (nodo == NULL) return;
+    fwrite(nodo, sizeof(no), 1,  f);
+    salvaBanco(nodo->esq, f);
+    salvaBanco(nodo->dir, f);
+}
+
+no* leBanco(no *raiz, FILE *f) {
+    while (1) {
+        no *novo = malloc(sizeof(no));
+        fread(novo, sizeof(no), 1, f);
+        if (feof(f)) break;
+        novo->esq = NULL;
+        novo->dir = NULL;
+        raiz = adiciona(raiz, novo);
+    }
+    return raiz;
+}
+
+// Arvore
+no* adiciona(no *nodo, no *new) {
+    if (nodo == NULL) return new;
+    if (strcmp(new->p.nome, nodo->p.nome) < 0) {
+        nodo->esq = adiciona(nodo->esq, new);
+    } else {
+        nodo->dir = adiciona(nodo->dir, new);
+    }
+    return nodo;
+}
+
+void print(no *n) {
+    if (n == NULL) return;
+    if (n->esq != NULL) print(n->esq);
+    printNome(n->p);
+    if (n->dir != NULL) print(n->dir);
+}
+
+no* findMin(no *nodo) {
+    if (nodo->esq != NULL) return findMin(nodo->esq);
+    else return nodo;
+}
+
+no* remover(no *nodo, char *s) {
+    if (nodo == NULL) return nodo;
+    else if (strcmp(nodo->p.nome, s) > 0) nodo->esq = remover(nodo->esq, s);
+    else if (strcmp(nodo->p.nome, s) < 0) nodo->dir = remover(nodo->dir, s);
+    else {
+        if (nodo->esq == NULL && nodo->dir == NULL) {
+            free(nodo);
+            nodo = NULL;
+        } else if (nodo->esq == NULL) {
+            no *aux = nodo;
+            nodo = nodo->dir;
+            free(aux);
+        } else if (nodo->dir == NULL) {
+            no *aux = nodo;
+            nodo = nodo->esq;
+            free(aux);
+        } else {
+            no *mi = findMin(nodo->dir);
+            nodo->p = mi->p;
+            nodo->dir = remover(nodo->dir, mi->p.nome);
+        }
+    }
+    return nodo;
+}
+
+void achaPessoa(no *nodo, char *s){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    } else if (nodo->esq != NULL && strcmp(nodo->p.nome, s) > 0) achaPessoa(nodo->esq, s);
+    else if (nodo->dir != NULL && strcmp(nodo->p.nome, s) < 0) achaPessoa(nodo->dir, s);
+    else printPessoa(nodo->p);
+}
+
+void achaMes(no *nodo, int *m, int *flag){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    }
+    if (nodo->p.nasci.mes == *m){
+        printNome(nodo->p);
+        *flag = 1;
+    }
+    if (nodo->esq != NULL) achaMes(nodo->esq, m, flag);
+    if(nodo->dir != NULL) achaMes(nodo->dir, m, flag);
+}
+
+void achaDia(no *nodo, int *m, int *dia, int *flag){
+    if (nodo == NULL){
+        printf("Pessoa não encontrada\n");
+        return;
+    }
+    if (nodo->p.nasci.mes == *m && nodo->p.nasci.dia == *dia){
+        printNome(nodo->p);
+        *flag = 1;
+    }
+    if (nodo->esq != NULL) achaDia(nodo->esq, m, dia, flag);
+    if(nodo->dir != NULL) achaDia(nodo->dir, m, dia, flag);
 }
